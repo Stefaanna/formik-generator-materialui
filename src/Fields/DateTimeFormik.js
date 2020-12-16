@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import HintWarning from "../UI/HintWarning";
-import { KeyboardDatePicker, DatePicker } from '@material-ui/pickers';
+import { KeyboardDateTimePicker, DateTimePicker } from '@material-ui/pickers';
 import { useField } from 'formik';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
-function DateFormik({ fieldData: { title = "", path = "", readOnly = false, hint = "", warning = "", required = false, openTo = "date", simple = false } }) {
+function DateTimeFormik({ fieldData: { title = "", path = "", 
+  readOnly = false, hint = "", warning = "", required = false, openTo = "date", simple = false } }) {
 
   const [field, { error }, helpers] = useField(path);
 
-  let DateComponent = readOnly ? DatePicker : KeyboardDatePicker;
+  let DateTimeComponent = readOnly ? DateTimePicker : KeyboardDateTimePicker;
 
+  // TODO: check if props match with the API
   return (
     <div className={classes.flex}>
       <HintWarning text={warning} isWarning />
-      <DateComponent
+      <DateTimeComponent
         margin={"dense"}
         name={field.name}
         disableToolbar={simple}
@@ -41,7 +43,7 @@ function DateFormik({ fieldData: { title = "", path = "", readOnly = false, hint
   )
 };
 
-DateFormik.propTypes = {
+DateTimeFormik.propTypes = {
   fieldData: PropTypes.shape({
     path: PropTypes.string.isRequired,
     readOnly: PropTypes.bool,
@@ -54,4 +56,4 @@ DateFormik.propTypes = {
   }),
 };
 
-export default DateFormik
+export default DateTimeFormik

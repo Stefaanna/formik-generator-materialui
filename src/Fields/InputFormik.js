@@ -1,24 +1,25 @@
 import React from 'react';
 import HintWarning from "../UI/HintWarning";
 import {
-  TextField, FormLabel
+  Input, InputLabel
 } from "@material-ui/core";
 import { useField } from 'formik';
 import { last } from '../functions/formHelper';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
-function TextFieldFormik({ fieldData: { title = "", label = "", path = "", readOnly = false, hint = "", warning = "", required = false, multiline = false, isLink = false } }) {
+function InputFormik({ fieldData: { label = "", title = "", 
+  path = "", readOnly = false, hint = "", warning = "", required = false, multiline = false, disabled = false, isLink = false } }) {
 
   const [field, { error }] = useField(path);
 
   return (
     <div className={classes.flex}>
-      {label ? <FormLabel>{label}</FormLabel> : null}
+      {label ? <InputLabel>{label}</InputLabel> : null}
       <HintWarning text={warning} isWarning />
-      <TextField
+      <Input
         name={path}
-        value={field.value || ''}
+        defaultValue={field.value || ''}
         onChange={field.onChange}
         onBlur={field.onBlur}
         error={!!error}
@@ -27,11 +28,10 @@ function TextFieldFormik({ fieldData: { title = "", label = "", path = "", readO
         className={classes.flexGrow}
         margin={"dense"}
         multiline={multiline}
-        variant={readOnly ? "filled" : "outlined"}
-        label={title}
-        InputLabelProps={!title ? { shrink: false } : {}}
-        InputProps={{
-          readOnly
+        disabled={disabled}
+        // inputLabelProps={!title ? { shrink: false } : {}}
+        inputProps={{
+           readOnly
         }}
       />
       {isLink && <HintWarning text={field.value || ''} isLink />}
@@ -40,7 +40,7 @@ function TextFieldFormik({ fieldData: { title = "", label = "", path = "", readO
   )
 };
 
-TextFieldFormik.propTypes = {
+InputFormik.propTypes = {
   fieldData: PropTypes.shape({
     path: PropTypes.string.isRequired,
     readOnly: PropTypes.bool,
@@ -50,8 +50,9 @@ TextFieldFormik.propTypes = {
     title: PropTypes.string,
     label: PropTypes.string,
     multiline: PropTypes.bool,
+    disabled: PropTypes.bool,
     isLink: PropTypes.bool,
   }),
 };
 
-export default TextFieldFormik
+export default InputFormik
