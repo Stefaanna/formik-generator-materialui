@@ -14,10 +14,10 @@ function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled =
   const handleClick = () => {
     onClick();
   }
-
+  
   return (
     <div className={classes.container}>
-      <div className={classes.flex}>
+      <div className={classes.flexColumn}>
       {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <IconButton 
         onClick={handleClick}

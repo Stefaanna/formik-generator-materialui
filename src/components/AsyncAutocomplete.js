@@ -37,7 +37,7 @@ function AsyncAutocomplete({ setValue, error, value,
 
   return (
     <div className={classes.container}>
-      <div className={classes.flex}>
+      <div className={classes.flexColumn}>
       <HintWarning text={warning} isWarning />
       <Autocomplete
         // getOptionSelected={fieldData.getOptionSelected}

@@ -49,7 +49,7 @@ function SelectFieldFormik({ fieldData: { title = "", path = "", label = "", mar
 
   return (
     <div className={classes.container}>
-      <div className={classes.flex}>
+      <div className={classes.flexColumn}>
       {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
       <FormControl

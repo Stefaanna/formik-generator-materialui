@@ -7,7 +7,7 @@ import { useField } from 'formik';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
-function AvatarFormik({ fieldData: { label = "", alt = "", src = null, path = "", imgProps = {}, sizes = [], variant= "circle" } }) {
+function AvatarFormik({ fieldData: { label = "", alt = "", src = null, path = "", imgProps = {}, sizes = [], variant= "circular" } }) {
 
   const [field] = useField(path);
 
@@ -18,7 +18,7 @@ function AvatarFormik({ fieldData: { label = "", alt = "", src = null, path = ""
 
   return (
     <div className={classes.container}>
-      <div className={classes.flex}>
+      <div className={classes.flexColumn}>
       {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <Avatar 
         alt={alt}

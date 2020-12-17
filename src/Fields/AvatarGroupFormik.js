@@ -3,33 +3,32 @@ import HintWarning from "../UI/HintWarning";
 import {
   Avatar, FormLabel, IconButton
 } from "@material-ui/core";
-import {Add} from '@material-ui/icons';
+import {Add, AddCircleOutlined} from '@material-ui/icons';
 import { useField } from 'formik';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
-function AvatarGroupFormik({ fieldData: { label = "", canAdd = false, path = "", items: { imgProps: {}, sizes = [], variant = "circle", alt = "", src = null, } } }) {
+function AvatarGroupFormik({ fieldData: { label = "", canAdd, path = "", items, onClick }}) {
 
   const [field] = useField(path);
 
-  const handleClick = () => {
-    onClick();
-  }
-
   return (
     <div className={classes.container}>
-      <div className={classes.flex}>
-      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
-      {canAdd ? <IconButton onClick={handleClick}><Add /></IconButton> : null}
-      {items.map(item => (
-          <Avatar 
-            alt={item.alt}
-            src={item.src}
-            imgProps={item.imgProps}
-            sizes={item.sizes}
-            variant={item.variant}
-        />
-      ))}
+      <div className={classes.flexColumn}>
+        {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
+        <div className={classes.flexRow}>
+          {canAdd ? <IconButton className={classes.iconButton} onClick={onClick}><AddCircleOutlined /></IconButton> : null}
+          {items.map(item => (
+              <Avatar 
+                className={classes.avatar}
+                alt={item.alt}
+                src={item.src}
+                imgProps={item.imgProps}
+                sizes={item.sizes}
+                variant={item.variant || "circular"}
+            />
+          ))}
+        </div>
     </div>
     </div>
   )
@@ -39,7 +38,13 @@ AvatarGroupFormik.propTypes = {
   fieldData: PropTypes.shape({
     path: PropTypes.string.isRequired,
     canAdd: PropTypes.bool,
-    items: PropTypes.array
+    items: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string,
+      alt: PropTypes.string,
+      sizes: PropTypes.array,
+      variant: PropTypes.string,
+      imgProps: PropTypes.object,
+    }))
   }),
 }; 
 

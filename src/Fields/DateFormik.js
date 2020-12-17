@@ -14,7 +14,7 @@ function DateFormik({ fieldData: { title = "", path = "", placeholder = "", labe
 
   return (
     <div className={classes.container}>
-      <div className={classes.flex}>
+      <div className={classes.flexColumn}>
       {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
       <DateComponent

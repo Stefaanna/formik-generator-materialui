@@ -15,7 +15,7 @@ function InputFormik({ fieldData: { label = "", title = "", path = "", readOnly 
 
   return (
     <div className={classes.container}>
-      <div className={classes.flex}>
+      <div className={classes.flexColumn}>
       {label ? <InputLabel className={classes.label}>{label}</InputLabel> : null}
       <HintWarning text={warning} isWarning />
       <InputBase
@@ -31,7 +31,7 @@ function InputFormik({ fieldData: { label = "", title = "", path = "", readOnly 
         multiline={multiline}
         disabled={disabled}
         placeholder={placeholder}
-        value={field.value}
+        // value={field.value}
         // inputLabelProps={!title ? { shrink: false } : {}}
         inputProps={{
            readOnly

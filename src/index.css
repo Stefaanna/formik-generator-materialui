@@ -3,13 +3,31 @@ flex-grow: 1;
 }
 
 .flex{
+  display: flex;
+}
+
+.flexColumn{
 display: flex;
 flex-direction: column;
 align-items: start;
 }
 
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: start;  
+}
+
 .container {
   margin: 15px 0;
+}
+
+.iconButton {
+  margin: 8px;
+}
+
+.avatar {
+  margin: 8px;
 }
 
 .label {
