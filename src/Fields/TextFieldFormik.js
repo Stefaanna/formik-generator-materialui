@@ -8,13 +8,14 @@ import { last } from '../functions/formHelper';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
-function TextFieldFormik({ fieldData: { title = "", label = "", path = "", readOnly = false, hint = "", warning = "", required = false, multiline = false, isLink = false } }) {
+function TextFieldFormik({ fieldData: { title = "", label = "", margin = "normal", path = "", placeholder = "", readOnly = false, hint = "", warning = "", required = false, multiline = false, isLink = false } }) {
 
   const [field, { error }] = useField(path);
 
   return (
-    <div className={classes.flex}>
-      {label ? <FormLabel>{label}</FormLabel> : null}
+    <div className={classes.container}>
+      <div className={classes.flex}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
       <TextField
         name={path}
@@ -25,10 +26,10 @@ function TextFieldFormik({ fieldData: { title = "", label = "", path = "", readO
         helperText={error}
         required={required}
         className={classes.flexGrow}
-        margin={"dense"}
+        margin={margin}
         multiline={multiline}
         variant={readOnly ? "filled" : "outlined"}
-        label={title}
+        label={placeholder || label}
         InputLabelProps={!title ? { shrink: false } : {}}
         InputProps={{
           readOnly
@@ -36,6 +37,7 @@ function TextFieldFormik({ fieldData: { title = "", label = "", path = "", readO
       />
       {isLink && <HintWarning text={field.value || ''} isLink />}
       <HintWarning text={hint} />
+    </div>
     </div>
   )
 };
@@ -49,6 +51,8 @@ TextFieldFormik.propTypes = {
     warning: PropTypes.string,
     title: PropTypes.string,
     label: PropTypes.string,
+    placeholder: PropTypes.string,
+    margin: PropTypes.string,
     multiline: PropTypes.bool,
     isLink: PropTypes.bool,
   }),

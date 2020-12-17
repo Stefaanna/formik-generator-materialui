@@ -10,13 +10,15 @@ import classes from '../index.css';
 import { last } from "../functions/formHelper";
 import PropTypes from 'prop-types';
 
-function CheckboxFormik({ fieldData: { title = "", path = "",
+function CheckboxFormik({ fieldData: { title = "", path = "", label = "",
   readOnly = false, hint = "", warning = "", required = false }, isSwitch }) {
 
   const [field] = useField(path);
 
   return (
-    <div className={classes.flex}>
+    <div className={classes.container}>
+      <div className={classes.flex}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
       <FormControlLabel
         control={
@@ -32,6 +34,7 @@ function CheckboxFormik({ fieldData: { title = "", path = "",
       />
       <HintWarning text={hint} />
     </div>
+    </div>
   )
 };
 
@@ -43,6 +46,7 @@ CheckboxFormik.propTypes = {
     hint: PropTypes.string,
     warning: PropTypes.string,
     title: PropTypes.string,
+    label: PropTypes.string,
   }),
 };
 

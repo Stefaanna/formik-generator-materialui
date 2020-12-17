@@ -10,7 +10,7 @@ import classes from '../index.css';
 import PropTypes from 'prop-types';
 
 function AsyncAutocomplete({ setValue, error, value,
-  fieldData: { title = "", path = "", readOnly = false, hint = "", warning = "", required = false,
+  fieldData: { title = "", path = "", readOnly = false, margin = "normal", hint = "", warning = "", required = false,
     getAsyncOptions = () => ([]), placeholder = "Search...", freeSolo = false, getOptionLabel = (v) => v }
 }) {
 
@@ -36,7 +36,8 @@ function AsyncAutocomplete({ setValue, error, value,
   }, [open]);
 
   return (
-    <div className={classes.flex}>
+    <div className={classes.container}>
+      <div className={classes.flex}>
       <HintWarning text={warning} isWarning />
       <Autocomplete
         // getOptionSelected={fieldData.getOptionSelected}
@@ -66,7 +67,7 @@ function AsyncAutocomplete({ setValue, error, value,
         renderInput={params => (
           <TextField
             {...params}
-            margin={"dense"}
+            margin={margin}
             error={!!error}
             readOnly={readOnly}
             disabled={false}
@@ -92,6 +93,7 @@ function AsyncAutocomplete({ setValue, error, value,
       />
       <HintWarning text={hint} />
     </div>
+    </div>
   );
 }
 
@@ -103,6 +105,7 @@ AsyncAutocomplete.propTypes = {
     hint: PropTypes.string,
     warning: PropTypes.string,
     title: PropTypes.string,
+    margin: PropTypes.string,
 
     getAsyncOptions: PropTypes.func.isRequired,
     placeholder: PropTypes.string,

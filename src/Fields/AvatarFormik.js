@@ -17,8 +17,9 @@ function AvatarFormik({ fieldData: { label = "", alt = "", src = null, path = ""
   }
 
   return (
-    <div className={classes.flex}>
-      {label ? <FormLabel>{label}</FormLabel> : null}
+    <div className={classes.container}>
+      <div className={classes.flex}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <Avatar 
         alt={alt}
         src={src}
@@ -26,6 +27,7 @@ function AvatarFormik({ fieldData: { label = "", alt = "", src = null, path = ""
         sizes={sizes}
         variant={variant}
       />
+    </div>
     </div>
   )
 };

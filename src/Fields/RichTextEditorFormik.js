@@ -12,7 +12,8 @@ function RichTextEditorFormik({ fieldData: { title = "", placeHolder = "...", pa
   const [{ value = "" }, { error }, { setValue }] = useField(path);
 
   return (
-    <div className={classes.marginContainer}>
+    <div className={classes.container}>
+      <div className={classes.marginContainer}>
       {title &&
         <Typography variant="body2"
           className={!!error ? classes.errorColor : ""}
@@ -34,6 +35,7 @@ function RichTextEditorFormik({ fieldData: { title = "", placeHolder = "...", pa
         />
       </div>
       {!!error && <FormHelperText error>{error}</FormHelperText>}
+    </div>
     </div>
   )
 }

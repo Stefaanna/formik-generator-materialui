@@ -77,7 +77,8 @@ function RenderFieldsContainer({ FieldGenerator, arrayHelpers, index, value,
     </Grid>)
 
   return (
-    <div className={classes.flex + " " + (needShadow && classes.shadowContainer)}>
+    <div className={classes.container}>
+      <div className={classes.flex + " " + (needShadow && classes.shadowContainer)}>
       <Grid container spacing={2} >
         {fields}
       </Grid>
@@ -114,6 +115,7 @@ function RenderFieldsContainer({ FieldGenerator, arrayHelpers, index, value,
           </IconButton>
         </Tooltip>
       </div>
+    </div>
     </div>
   )
 };

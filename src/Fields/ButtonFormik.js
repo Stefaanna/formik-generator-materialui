@@ -18,7 +18,8 @@ function ButtonFormik({ fieldData: { message = "", path = "",
   }
 
   return (
-    <div className={classes.flex}>
+    <div className={classes.container}>
+      <div className={classes.flex}>
       <Button 
         onClick={handleClick}
         startIcon={startIcon}
@@ -29,6 +30,7 @@ function ButtonFormik({ fieldData: { message = "", path = "",
       >
           {message}
       </Button>
+    </div>
     </div>
   )
 };

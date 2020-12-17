@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 
 import { last } from "../functions/formHelper";
 
-function SelectFieldFormik({ fieldData: { title = "", path = "", readOnly = false, hint = "", warning = "", required = false, choices = [] } }) {
+function SelectFieldFormik({ fieldData: { title = "", path = "", label = "", margin = "dense", readOnly = false, hint = "", warning = "", required = false, choices = [] } }) {
 
   const [field, { error }] = useField(path);
 
@@ -48,12 +48,14 @@ function SelectFieldFormik({ fieldData: { title = "", path = "", readOnly = fals
   })
 
   return (
-    <div className={classes.flex}>
+    <div className={classes.container}>
+      <div className={classes.flex}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
       <FormControl
         error={!!error}
         variant={readOnly ? "filled" : "outlined"}
-        margin={"dense"}
+        margin={margin}
         className={classes.flexGrow}>
         <InputLabel
           shrink={!!field.value || (field.value === 0)}
@@ -86,9 +88,10 @@ function SelectFieldFormik({ fieldData: { title = "", path = "", readOnly = fals
         >
           {menu}
         </Select>
-        {error && <FormHelperText margin={"dense"} error>{error}</FormHelperText>}
+        {error && <FormHelperText margin={margin} error>{error}</FormHelperText>}
       </FormControl>
       <HintWarning text={hint} />
+    </div>
     </div>
   )
 };
@@ -102,7 +105,9 @@ SelectFieldFormik.propTypes = {
     hint: PropTypes.string,
     warning: PropTypes.string,
     title: PropTypes.string,
-
+    margin: PropTypes.string,
+    label: PropTypes.string,
+    
     choices: PropTypes.array
     // choices: PropTypes.oneOfType([
     //   PropTypes.arrayOf(PropTypes.object),

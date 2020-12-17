@@ -17,8 +17,9 @@ function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled =
   }
 
   return (
-    <div className={classes.flex}>
-      {label ? <FormLabel>{label}</FormLabel> : null}
+    <div className={classes.container}>
+      <div className={classes.flex}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <IconButton 
         onClick={handleClick}
         disabled={disabled}
@@ -26,6 +27,7 @@ function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled =
       >
           {icon}
       </IconButton>
+    </div>
     </div>
   )
 };

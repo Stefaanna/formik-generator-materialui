@@ -4,6 +4,16 @@ flex-grow: 1;
 
 .flex{
 display: flex;
+flex-direction: column;
+align-items: start;
+}
+
+.container {
+  margin: 15px 0;
+}
+
+.label {
+  color: #475569;
 }
 
 .buttonHint  {

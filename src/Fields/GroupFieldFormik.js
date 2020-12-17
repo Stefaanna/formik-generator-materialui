@@ -9,7 +9,8 @@ function GroupFieldFormik({ fieldData: {
 }, FieldGenerator }) {
 
   return (
-    <div className={classes.borderContainer}>
+    <div className={classes.container}>
+      <div className={classes.borderContainer}>
       {title && <Typography variant="body2"
         gutterBottom
         color="textSecondary"
@@ -23,6 +24,7 @@ function GroupFieldFormik({ fieldData: {
           <FieldGenerator fieldData={subfieldData} readOnly={readOnly} />
         </Grid>)}
       </Grid>
+    </div>
     </div>
   )
 }

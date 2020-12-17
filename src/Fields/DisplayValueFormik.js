@@ -9,7 +9,7 @@ import get from 'lodash.get';
 import PropTypes from 'prop-types';
 
 function DisplayValueFormik({ fieldData: {
-  title = "", hint = "", warning = "", required = false, isLink = false,
+  title = "", label = "", margin = "normal", hint = "", warning = "", required = false, isLink = false,
   yup = null, multiline = false, transformation = (v) => v, display = [], separator = ""
 } }) {
 
@@ -43,11 +43,13 @@ function DisplayValueFormik({ fieldData: {
   }
 
   return (
-    <div className={classes.flex}>
+    <div className={classes.container}>
+      <div className={classes.flex}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
       <TextField
         className={classes.flexGrow}
-        margin={"dense"}
+        margin={margin}
         required={required}
         variant={"filled"}
         label={title}
@@ -63,6 +65,7 @@ function DisplayValueFormik({ fieldData: {
       {isLink && <HintWarning text={displayedValue || ''} isLink />}
       <HintWarning text={hint} />
     </div>
+    </div>
   )
 };
 
@@ -72,7 +75,9 @@ DisplayValueFormik.propTypes = {
     hint: PropTypes.string,
     warning: PropTypes.string,
     title: PropTypes.string,
-
+    margin: PropTypes.string,
+    label: PropTypes.string,
+    
     multiline: PropTypes.bool,
     yup: PropTypes.object,
     transformation: PropTypes.func,

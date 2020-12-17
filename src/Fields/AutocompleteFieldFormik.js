@@ -14,14 +14,16 @@ import PropTypes from 'prop-types';
 let localValue = "";
 
 function AutocompleteFieldFormik({ fieldData: {
-  title = "", path = "", readOnly = false, hint = "", warning = "", required = false,
+  title = "", path = "", readOnly = false, margin = "normal", label = "", hint = "", warning = "", required = false,
   freeSolo = false, options = [], getOptionLabel = (v) => v, placeholder = "Search..."
 } }) {
 
   const [{ value }, { error }, { setValue }] = useField(path);
 
   return (
-    <div className={classes.flex}>
+    <div className={classes.container}>
+      <div className={classes.flex}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
       <Autocomplete
         // defaultValue={}
@@ -48,7 +50,7 @@ function AutocompleteFieldFormik({ fieldData: {
         }}
         renderInput={params => (<TextField
           {...params}
-          margin={"dense"}
+          margin={margin}
           error={!!error}
           required={required}
           helperText={error}
@@ -62,6 +64,7 @@ function AutocompleteFieldFormik({ fieldData: {
       />
       <HintWarning text={hint} />
     </div>
+    </div>
   )
 };
 
@@ -73,7 +76,8 @@ AutocompleteFieldFormik.propTypes = {
     hint: PropTypes.string,
     warning: PropTypes.string,
     title: PropTypes.string,
-
+    label: PropTypes.string,
+    
     freeSolo: PropTypes.bool,
     options: PropTypes.array,
     getOptionLabel: PropTypes.func,

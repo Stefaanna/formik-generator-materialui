@@ -14,7 +14,7 @@ import RichTextEditorFormik from '../Fields/RichTextEditorFormik';
 import GroupFieldFormik from '../Fields/GroupFieldFormik';
 import ButtonFormik from '../Fields/ButtonFormik';
 import IconButtonFormik from '../Fields/IconButtonFormik';
-import Avatar from '../Fields/AvatarFormik';
+import AvatarFormik from '../Fields/AvatarFormik';
 import PropTypes from 'prop-types';
 
 function FieldGenerator({ fieldData, readOnly = true }) {
@@ -27,7 +27,7 @@ function FieldGenerator({ fieldData, readOnly = true }) {
     case "text":
       return <TextFieldFormik fieldData={fieldDataWithReadOnly} />;
     case "input":
-      return <InputFieldFormik fieldData={fieldDataWithReadOnly} />;
+      return <InputFormik fieldData={fieldDataWithReadOnly} />;
     case "select":
       return <SelectFieldFormik fieldData={fieldDataWithReadOnly} />;
     case "displayValue":

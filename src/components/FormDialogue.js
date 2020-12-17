@@ -37,7 +37,7 @@ function FormDialogue({ onOk = () => null, disableCancelOnOK = false,
             <Button href={link.url} target="_blank" color="primary" size={"small"} variant={"outlined"}>{link.name || link.url}</Button>
           }
           {component}
-          <FormGenerator
+          <FormGenclasses.flexclasses.flexerator
             validationSchema={validationSchema}
             onSubmit={(values) => {
               !disableCancelOnOK && onCancel();
