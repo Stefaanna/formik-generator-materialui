@@ -12,7 +12,6 @@ function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled =
   const [field] = useField(path);
 
   const handleClick = () => {
-    console.log('clicked IconButton');
     onClick();
   }
 

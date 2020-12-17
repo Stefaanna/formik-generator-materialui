@@ -13,7 +13,6 @@ function ButtonFormik({ fieldData: { message = "", path = "",
   const [field] = useField(path);
 
   const handleClick = () => {
-    console.log('clicked button');
     onClick();
   }
 

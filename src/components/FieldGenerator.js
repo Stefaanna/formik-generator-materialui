@@ -15,6 +15,7 @@ import GroupFieldFormik from '../Fields/GroupFieldFormik';
 import ButtonFormik from '../Fields/ButtonFormik';
 import IconButtonFormik from '../Fields/IconButtonFormik';
 import AvatarFormik from '../Fields/AvatarFormik';
+import AvatarGroupFormik from '../Fields/AvatarFormik';
 import PropTypes from 'prop-types';
 
 function FieldGenerator({ fieldData, readOnly = true }) {
@@ -56,6 +57,8 @@ function FieldGenerator({ fieldData, readOnly = true }) {
       return <IconButtonFormik fieldData={fieldDataWithReadOnly} />;
     case "avatar":
       return <AvatarFormik fieldData={fieldDataWithReadOnly} />;
+    case "avatarGroup":
+      return <AvatarGroupFormik fieldData={fieldDataWithReadOnly} />;
     default:
       return null
   }
