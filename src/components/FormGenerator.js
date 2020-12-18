@@ -6,14 +6,15 @@ import FormikWithRef from './FormikWithRef';
 import {
   MuiPickersUtilsProvider
 } from '@material-ui/pickers';
+import {Button} from '@material-ui/core';
 import classes from '../index.css';
 import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
 import ErrorListener from './ErrorListener';
 import SubmitListener from './SubmitListener';
 
-function FormGenerator({ initialValues = {}, fields = [], getFields = null, onSubmit = () => null, onError = null, readOnly = false, formRef = null,
-  validateOnBlur = true, validateOnChange = true, validateOnMount = true, onSubmitWithError = null,
+function FormGenerator({ initialValues = {}, fields = [], getFields = null, onCancel = () => null, onSubmit = () => null, cancelMessage = "Cancel", submitMessage = "Submit",
+  onError = null, readOnly = false, formRef = null, validateOnBlur = true, validateOnChange = true, validateOnMount = true, onSubmitWithError = null,
   validationSchema = null, shouldTriggerErrors = null }) {
 
   return (
@@ -32,16 +33,22 @@ function FormGenerator({ initialValues = {}, fields = [], getFields = null, onSu
         validationSchema={validationSchema}
       >
         {({ values, ...formFunction }) => (
-          <Form>
-            {!!onError && <ErrorListener onError={onError} shouldTriggerErrors={shouldTriggerErrors} />}
-            {!!onSubmitWithError && <SubmitListener onSubmitWithError={onSubmitWithError} />}
-            { (!!getFields ? getFields(values) : fields).map((field, i) => <div key={i} className={classes.noCollapse}>
-              <FieldGenerator
-                readOnly={readOnly}
-                formFunction={formFunction}
-                fieldData={field}
-              />
-            </div>)}
+          <Form className={classes.form}>
+            <div>
+              {!!onError && <ErrorListener onError={onError} shouldTriggerErrors={shouldTriggerErrors} />}
+              {!!onSubmitWithError && <SubmitListener onSubmitWithError={onSubmitWithError} />}
+              { (!!getFields ? getFields(values) : fields).map((field, i) => <div key={i} className={classes.noCollapse}>
+                <FieldGenerator
+                  readOnly={readOnly}
+                  formFunction={formFunction}
+                  fieldData={field}
+                />
+              </div>)}
+            </div>
+            <div className={classes.formButtons}>
+              <Button onClick={() => onCancel()} variant="contained">{cancelMessage}</Button>            
+              <Button onClick={() => onSubmit(values)} variant="contained" color="primary" className={classes.submitBtn}>{submitMessage}</Button>
+            </div>
           </Form>
         )}
       </FormikWithRef>
@@ -53,7 +60,10 @@ FormGenerator.propTypes = {
   initialValues: PropTypes.object,
   fields: PropTypes.arrayOf(PropTypes.object),
   getFields: PropTypes.func,
+  onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
+  cancelMessage: PropTypes.string,
+  submitMessage: PropTypes.string,
   readOnly: PropTypes.bool,
   formRef: PropTypes.object.isRequired,
   validateOnBlur: PropTypes.bool,

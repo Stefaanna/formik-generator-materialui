@@ -2,7 +2,6 @@ import React from 'react';
 import { FieldArray, useField } from 'formik';
 import AddIcon from '@material-ui/icons/AddCircle';
 import RemoveIcon from '@material-ui/icons/RemoveCircle';
-// import RemoveIcon from '@material-ui/icons/Delete';
 import HintWarning from "../UI/HintWarning";
 import { Button, IconButton, Typography, FormHelperText, Tooltip, Grid, Divider } from '@material-ui/core';
 import classes from '../index.css';
@@ -77,8 +76,8 @@ function RenderFieldsContainer({ FieldGenerator, arrayHelpers, index, value,
     </Grid>)
 
   return (
-    <div className={classes.container}>
-      <div className={classes.flex + " " + (needShadow && classes.shadowContainer)}>
+      <div className={classes.flex}>
+      {/* <div className={classes.flex + " " + (needShadow && classes.shadowContainer)}> */}
       <Grid container spacing={2} >
         {fields}
       </Grid>
@@ -115,7 +114,6 @@ function RenderFieldsContainer({ FieldGenerator, arrayHelpers, index, value,
           </IconButton>
         </Tooltip>
       </div>
-    </div>
     </div>
   )
 };

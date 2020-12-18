@@ -13,7 +13,7 @@ function TextFieldFormik({ fieldData: { title = "", label = "", margin = "normal
   const [field, { error }] = useField(path);
 
   return (
-    <div className={classes.container}>
+    // <div className={classes.container}>
       <div className={classes.flexColumn}>
       {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <HintWarning text={warning} isWarning />
@@ -38,7 +38,7 @@ function TextFieldFormik({ fieldData: { title = "", label = "", margin = "normal
       {isLink && <HintWarning text={field.value || ''} isLink />}
       <HintWarning text={hint} />
     </div>
-    </div>
+    // </div>
   )
 };
 

@@ -1,16 +1,17 @@
 import React from 'react';
 import HintWarning from "../UI/HintWarning"
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid, FormLabel } from '@material-ui/core';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
 function GroupFieldFormik({ fieldData: {
-  title = "", readOnly = false, hint = "", warning = "", subfields = [],
+  label = "", title = "", readOnly = false, hint = "", warning = "", subfields = [],
 }, FieldGenerator }) {
 
   return (
     <div className={classes.container}>
-      <div className={classes.borderContainer}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
+      {/* <div className={classes.borderContainer}> */}
       {title && <Typography variant="body2"
         gutterBottom
         color="textSecondary"
@@ -24,7 +25,7 @@ function GroupFieldFormik({ fieldData: {
           <FieldGenerator fieldData={subfieldData} readOnly={readOnly} />
         </Grid>)}
       </Grid>
-    </div>
+    {/* </div> */}
     </div>
   )
 }
@@ -33,6 +34,7 @@ GroupFieldFormik.propTypes = {
   fieldData: PropTypes.shape({
     readOnly: PropTypes.bool,
     hint: PropTypes.string,
+    label: PropTypes.string,
     warning: PropTypes.string,
     title: PropTypes.string,
 

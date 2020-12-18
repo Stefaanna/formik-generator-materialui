@@ -7,27 +7,20 @@ import { useField } from 'formik';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
-function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled = false, size = "medium", onClick } }) {
-
-  const [field] = useField(path);
-
-  const handleClick = () => {
-    onClick();
-  }
-  
+function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled = false, size = "medium", onClick } }) {  
   return (
-    <div className={classes.container}>
+    // <div className={classes.container}>
       <div className={classes.flexColumn}>
       {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <IconButton 
-        onClick={handleClick}
+        onClick={onClick}
         disabled={disabled}
         size={size}
       >
           {icon}
       </IconButton>
     </div>
-    </div>
+    // </div>
   )
 };
 

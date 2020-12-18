@@ -34,9 +34,22 @@ align-items: start;
   color: #475569;
 }
 
+.form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
 .buttonHint  {
-margin-top: 5px;
-margin : 5px 4px 0px 4px;
+/* margin-top: 5px; */
+margin : 16px 4px 0px 4px;
 }
 
 .errorBorderContainer{
@@ -52,6 +65,10 @@ margin : 5px 4px 0px 4px;
 
 .noCollapse {
   padding: 0.05px;
+}
+
+.formButtons .submitBtn {
+  margin-left: 15px;
 }
 
 .borderContainer{
