@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 
 function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled = false, size = "medium", onClick } }) {  
   return (
-    // <div className={classes.container}>
       <div className={classes.flexColumn}>
       {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
       <IconButton 
@@ -20,7 +19,6 @@ function IconButtonFormik({ fieldData: { label = "", icon, path = "", disabled =
           {icon}
       </IconButton>
     </div>
-    // </div>
   )
 };
 

@@ -88,6 +88,9 @@ function Example {
  - initialValues: object (reinitialize form on change)
  - fields: array of object
  - onSubmit: func
+ - onCancel: func
+ - submitMessage: func
+ - cancelMessage: func
  - readOnly: bool
  - formRef: object.isRequired (to get form functions)
  - validateOnBlur: bool (less validation, less memory) default true
@@ -168,6 +171,7 @@ function Example {
 -  warning: string
 -  title: string
 -  subfields: array of objects
+-  label: string
 
 ### text
 
@@ -177,7 +181,29 @@ function Example {
 -  hint: string
 -  warning: string
 -  title: string
+-  type: string
+-  label: string
+-  placeholder: string
+-  margin: string
 -  multiline: bool
+-  isLink: bool
+
+### input
+
+-  path: string (Required)
+-  readOnly: bool
+-  required: bool
+-  hint: string
+-  warning: string
+-  title: string
+-  label: string
+-  placeholder: string
+-  value: string
+-  type: string
+-  defaultValue: string
+-  margin: string
+-  multiline: bool
+-  disabled: bool
 -  isLink: bool
 
 ### displayValue
@@ -192,6 +218,8 @@ function Example {
 -  separator: string
 -  display: array
 -  isLink: bool
+-  margin: string
+-  label: string
 
 ### select
 
@@ -202,6 +230,8 @@ function Example {
 -  warning: string
 -  title: string
 -  choices: array
+-  margin: string
+-  label: string
 
 ### date
 
@@ -212,6 +242,21 @@ function Example {
 -  warning: string
 -  title: string
 -  openTo: string ("year")
+-  margin: string
+-  label: string
+-  placeholder: string
+
+### dateTime
+-  path: string (Required)
+-  readOnly: bool
+-  required: bool
+-  hint: string
+-  warning: string
+-  title: string
+-  margin: string
+-  label: string
+-  palceholder: string
+-  openTo: string
 
 ### richTextEditor
 
@@ -231,6 +276,7 @@ function Example {
 -  hint: string
 -  warning: string
 -  title: string
+-  label: string
 
 ### checkbox
 
@@ -240,6 +286,7 @@ function Example {
 -  hint: string
 -  warning: string
 -  title: string
+-  label: string
 
 ### arrayObject
 
@@ -280,6 +327,7 @@ function Example {
 -  options: array
 -  getOptionLabel: function
 -  placeholder: string
+-  label: string
 
 ### asyncAutocomplete
 
@@ -293,6 +341,35 @@ function Example {
 -  getOptionLabel: function
 -  getAsyncOptions: function required
 -  placeholder: string
+
+### avatar
+
+-  path: string (Required)
+-  alt: string
+-  src: string
+-  imgProps: object
+-  sizes: array
+-  variant: string
+
+### button
+
+-  path: string (Required)
+-  message: string
+-  startIcon: any
+-  endIcon: any
+-  disabled: bool
+-  size: string
+-  variant: string
+-  onClick: func
+
+### iconButton
+
+-  path: string (Required)
+-  icon: any
+-  label: string
+-  disabled: bool
+-  size: string
+-  onClick: func
 
 ## To run in localhost :
 

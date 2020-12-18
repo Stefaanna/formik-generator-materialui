@@ -8,7 +8,7 @@ import { last } from '../functions/formHelper';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 
-function InputFormik({ fieldData: { label = "", title = "", path = "", readOnly = false, hint = "", 
+function InputFormik({ fieldData: { label = "", title = "", path = "", readOnly = false, hint = "", type = "text", 
   warning = "", required = false, multiline = false, margin = "dense", disabled = false, isLink = false, value = "", placeholder = "", defaultValue = "" } }) {
 
   const [field, { error }] = useField(path);
@@ -26,6 +26,7 @@ function InputFormik({ fieldData: { label = "", title = "", path = "", readOnly 
         error={!!error}
         helperText={error}
         required={required}
+        type={type}
         className={classes.flexGrow}
         margin={margin}
         multiline={multiline}
@@ -55,6 +56,7 @@ InputFormik.propTypes = {
     label: PropTypes.string,
     placeholder: PropTypes.string,
     value: PropTypes.string,
+    type: PropTypes.string,
     defaultValue: PropTypes.string,
     margin: PropTypes.string,
     multiline: PropTypes.bool,

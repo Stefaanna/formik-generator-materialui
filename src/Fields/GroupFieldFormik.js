@@ -25,7 +25,7 @@ function GroupFieldFormik({ fieldData: {
           <FieldGenerator fieldData={subfieldData} readOnly={readOnly} />
         </Grid>)}
       </Grid>
-    {/* </div> */}
+      {/* </div> */}
     </div>
   )
 }
