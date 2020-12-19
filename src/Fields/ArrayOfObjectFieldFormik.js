@@ -3,7 +3,7 @@ import { FieldArray, useField } from 'formik';
 import AddIcon from '@material-ui/icons/AddCircle';
 import RemoveIcon from '@material-ui/icons/RemoveCircle';
 import HintWarning from "../UI/HintWarning";
-import { Button, IconButton, Typography, FormHelperText, Tooltip, Grid, Divider } from '@material-ui/core';
+import { Button, IconButton, Typography, FormHelperText, Tooltip, Grid, Divider , FormLabel} from '@material-ui/core';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
 import ArrowDropDownCircleIcon from '@material-ui/icons/ArrowDropDownCircle';
@@ -15,36 +15,40 @@ function ArrayOfObjectFieldFormik({ FieldGenerator, fieldData,
 
   let haveError = (!!error) && !(Array.isArray(error) && error.every(v => !v));
 
-  return <FieldArray
-    validateOnChange={false}
-    name={path}
-    render={arrayHelpers => (
-      <div className={noBorder ? "" : haveError ? classes.errorBorderContainer : classes.borderContainer}>
-        {title && <Typography variant="body2" gutterBottom
-          className={haveError ? classes.errorColor : ""}
-          color="textSecondary"
-          component={'div'}>{required ? title + " *" : title}
-          <HintWarning text={warning} isWarning />
-          <HintWarning text={hint} />
-        </Typography>}
-        {value && value.length > 0 ? <div>
-          {value.map((arrayValue, index) => (
-            <span key={index}>
-              <RenderFieldsContainer arrayHelpers={arrayHelpers} index={index} fieldData={fieldData} value={value} FieldGenerator={FieldGenerator} />
-            </span>
-          )
-          )}
-        </div> :
-          <Button
-            disabled={readOnly} variant="outlined"
-            onClick={() => arrayHelpers.push({})}>
-            {emptyAddText}
-          </Button>
-        }
-        {!!error && !Array.isArray(error) && < FormHelperText error>{error}</FormHelperText>}
-      </div>
-    )}
-  />
+  return (
+    <div className={classes.container}>
+      {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
+      <FieldArray
+        validateOnChange={false}
+        name={path}
+        render={arrayHelpers => (
+          <div className={noBorder ? "" : haveError ? classes.errorBorderContainer : classes.borderContainer}>
+            {label && <Typography variant="body2" gutterBottom
+              className={haveError ? classes.errorColor : ""}
+              // color="textSecondary"
+              component={'div'}>{required ? title + " *" : title}
+              <HintWarning text={warning} isWarning />
+              <HintWarning text={hint} />
+            </Typography>}
+            {value && value.length > 0 ? <div>
+              {value.map((arrayValue, index) => (
+                <span key={index}>
+                  <RenderFieldsContainer arrayHelpers={arrayHelpers} index={index} fieldData={fieldData} value={value} FieldGenerator={FieldGenerator} />
+                </span>
+              )
+              )}
+            </div> :
+              <Button
+                disabled={readOnly} variant="outlined"
+                onClick={() => arrayHelpers.push({})}>
+                {emptyAddText}
+              </Button>
+            }
+            {!!error && !Array.isArray(error) && < FormHelperText error>{error}</FormHelperText>}
+          </div>
+        )}
+      />
+  </div>
 }
 
 

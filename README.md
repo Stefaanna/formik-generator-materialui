@@ -371,6 +371,22 @@ function Example {
 -  size: string
 -  onClick: func
 
+### listItem 
+
+-  path: string (Required)
+-  readOnly: bool
+-  disabled: bool
+-  avatar: string
+-  primary: string
+-  secondary: string
+-  hasSecondaryAction: bool
+-  hasAvatar: bool
+-  canAdd: bool
+-  canDelete: bool
+-  onAdd: func
+-  onEdit: func
+-  onRemove: func
+
 ## To run in localhost :
 
 - npm start

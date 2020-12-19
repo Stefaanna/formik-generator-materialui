@@ -15,7 +15,7 @@ align-items: start;
 .flexRow {
   display: flex;
   flex-direction: row;
-  align-items: start;  
+  align-items: center;  
 }
 
 .container {
@@ -30,7 +30,7 @@ align-items: start;
   margin: 8px;
 }
 
-.label {
+.container .label {
   color: #475569;
 }
 
@@ -69,6 +69,64 @@ margin : 16px 4px 0px 4px;
 
 .formButtons .submitBtn {
   margin-left: 15px;
+}
+
+.container .addCircleButton {
+  width: 40px;
+  height: 40px;
+  border: 2px dashed #DEDFE1;
+}
+.container .addCircleButton svg {
+  color: #DEDFE1;
+}
+
+.listItemContainer {
+  list-style-type: none;
+  width: 100%;
+}
+
+.listItemContainer .removeIcon {
+  background: #FB344F;
+  box-shadow: 1px 1px 2px rgba(36, 42, 55, 0.15), 1px 2px 10px rgba(0, 0, 0, 0.1), -2px -2px 5px #FFFFFF, inset 2px 2px 3px rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  margin-left: 5px;
+}
+.listItemContainer .removeIcon:hover {
+  background: #ce2a40;
+}
+
+.listItemContainer .addIcon {
+  background: #2ECC71;
+  box-shadow: 1px 1px 2px rgba(36, 42, 55, 0.15), 1px 2px 10px rgba(0, 0, 0, 0.1), -2px -2px 5px #FFFFFF, inset 2px 2px 3px rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+}
+.listItemContainer .addIcon:hover {
+  background: #25af5e;  
+}
+
+.listItemContainer .editIcon {
+  background: #1D88F4;
+  box-shadow: 1px 1px 2px rgba(36, 42, 55, 0.15), 1px 2px 10px rgba(0, 0, 0, 0.1), -2px -2px 5px #FFFFFF, inset 2px 2px 3px rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+}
+.listItemContainer .editIcon:hover {
+  background: #1e73c7;
+}
+
+.listItemContainer .editIcon svg {
+  width: 16px;
+}
+
+.listItemContainer .editIcon svg, 
+.listItemContainer .removeIcon svg,
+.listItemContainer .addIcon svg {
+  color: white;
 }
 
 .borderContainer{

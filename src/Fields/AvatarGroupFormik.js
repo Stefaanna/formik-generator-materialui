@@ -3,7 +3,7 @@ import HintWarning from "../UI/HintWarning";
 import {
   Avatar, FormLabel, IconButton
 } from "@material-ui/core";
-import {Add, AddCircleOutlined} from '@material-ui/icons';
+import {Add} from '@material-ui/icons';
 import { useField } from 'formik';
 import classes from '../index.css';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ function AvatarGroupFormik({ fieldData: { label = "", canAdd, path = "", items, 
       <div className={classes.flexColumn}>
         {label ? <FormLabel className={classes.label}>{label}</FormLabel> : null}
         <div className={classes.flexRow}>
-          {canAdd ? <IconButton className={classes.iconButton} onClick={onClick}><AddCircleOutlined /></IconButton> : null}
+          {canAdd ? <IconButton className={classes.addCircleButton} onClick={onClick}><Add /></IconButton> : null}
           {items.map(item => (
               <Avatar 
                 className={classes.avatar}
