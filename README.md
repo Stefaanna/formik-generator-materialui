@@ -351,6 +351,17 @@ function Example {
 -  sizes: array
 -  variant: string
 
+### avatarGroup
+
+-  path: string (Required)
+-  canAdd: bool
+-  items: array of object:
+      -  src: string
+      -  alt: string
+      -  sizes: array
+      -  variant: string
+      -  imgProps: object
+
 ### button
 
 -  path: string (Required)
